@@ -57,6 +57,12 @@
 			<artifactId>opentelemetry-extension-annotations</artifactId>
 			<version>1.2.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+			<version>1.6.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -67,5 +73,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
