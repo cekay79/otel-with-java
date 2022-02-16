@@ -1,5 +1,7 @@
 package com.riferrei.otel.java;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Metrics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,8 @@ public class HelloAppController {
 
     private static final Logger log =
         LoggerFactory.getLogger(HelloAppController.class);
+
+    static final Counter counter = Metrics.counter("test.counter");
 
     private static final Tracer tracer =
         GlobalOpenTelemetry.getTracer("io.opentelemetry.traces.hello");
@@ -60,6 +64,7 @@ public class HelloAppController {
         }
         // Updating the metric
         numberOfExecutions.add(1);
+        counter.increment();
         return response;
     }
 
